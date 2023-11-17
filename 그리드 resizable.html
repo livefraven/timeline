@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        height: 100vh; /* 전체 높이를 활용하기 위해 뷰포트 높이로 설정 */
+      }
+
+      .resizable-column {
+        overflow: hidden;
+        border-right: 1px solid #ddd; /* 조절 핸들을 시각적으로 나타내기 위해 오른쪽 테두리 추가 */
+        position: relative;
+      }
+
+      .handle {
+        width: 10px;
+        cursor: ew-resize; /* 좌우로 드래그 가능한 커서로 변경 */
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+      }
+
+      .content {
+        padding: 20px;
+        box-sizing: border-box;
+        height: 100%;
+      }
+    </style>
+    <title>Resizable Grid Layout</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="resizable-column" id="leftColumn">
+        <!-- 좌우로 조절 가능한 컬럼 -->
+        <div class="handle" id="resizeHandle"></div>
+        <div class="content">
+          <!-- 내용 -->
+          <h2>Resizable Grid Layout</h2>
+          <p>
+            This is a resizable grid layout with a left column of 2fr and a
+            right column of 1fr.
+          </p>
+        </div>
+      </div>
+      <div class="resizable-column">
+        <!-- 좌우로 조절 가능한 컬럼 -->
+        <div class="content">
+          <!-- 내용 -->
+          <h2>Resizable Grid Layout</h2>
+          <p>
+            This is a resizable grid layout with a left column of 2fr and a
+            right column of 1fr.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript로 화면 비율 조절 추가
+      const resizeHandle = document.getElementById("resizeHandle");
+      const leftColumn = document.getElementById("leftColumn");
+      let isResizing = false;
+
+      resizeHandle.addEventListener("mousedown", (event) => {
+        isResizing = true;
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseup", () => {
+          isResizing = false;
+          document.removeEventListener("mousemove", handleMouseMove);
+        });
+      });
+
+      function handleMouseMove(event) {
+        if (isResizing) {
+          const containerWidth =
+            leftColumn.parentElement.getBoundingClientRect().width;
+          const leftColumnWidth =
+            event.pageX - leftColumn.getBoundingClientRect().left;
+          const rightColumnWidth = containerWidth - leftColumnWidth;
+
+          leftColumn.style.width = `${leftColumnWidth}px`;
+          leftColumn.nextElementSibling.style.width = `${rightColumnWidth}px`;
+        }
+      }
+    </script>
+  </body>
+</html>
