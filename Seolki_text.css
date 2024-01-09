@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "KyoboHand";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* 일시적 시스템 글꼴 표시. SEO 중에 하나, 페이지 로딩 속도 관련 */
+} /* 교보손글씨 */
+
+/* 건국 */
+.found {
+  color: #8b4513;
+}
+
+/* a 태그의 글자색을 검은색으로 고정 */
+a {
+  color: #000;
+}
+
+/* phase 구분선 */
+.line1,
+.line2,
+.line3,
+.line4,
+.line5,
+.line6 {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 2px;
+}
+.line1 {
+  color: #d2b48c;
+}
+.line2 {
+  color: #3eb489;
+}
+.line3 {
+  color: #b82647;
+}
+.line4 {
+  color: #6d1b43;
+}
+.line5 {
+  color: #333333;
+}
+.line6 {
+  color: #005ba6;
+}
+
+/* 경제 관련 */
+.economy {
+  color: #000;
+}
+
+.reference {
+  font-style: italic;
+  color: gray;
+}
+
+.king {
+  background: linear-gradient(to right, #ffffff, rgb(205, 49, 58, 0.5));
+  border: 0px solid white;
+  border-radius: 4px;
+}
+
+.election {
+  background: linear-gradient(to right, #ffffff, rgb(0, 71, 160, 0.5));
+  border: 0px solid white;
+  border-radius: 4px;
+}
+
+.hideYears {
+  display: none;
+  color: gray;
+}
